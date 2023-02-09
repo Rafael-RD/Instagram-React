@@ -1,3 +1,16 @@
+const posts = [
+    { imgUser: "assets/img/meowed.svg", nameUser: "meowed", img: "assets/img/gato-telefone.svg", imgAlt: "gato-telefone", likeUser: "respondeai", likeUserImg: "assets/img/respondeai.svg", likeNumber: "101.523" },
+    { imgUser: "assets/img/barked.svg", nameUser: "barked", img: "assets/img/dog.svg", imgAlt: "dog", likeUser: "adorable_animals", likeUserImg: "assets/img/adorable_animals.svg", likeNumber: "99.159" }
+];
+
+export default function Posts() {
+    return (
+        <div class="posts">
+            {posts.map(e => <Post imgUser={e.imgUser} nameUser={e.nameUser} img={e.img} imgAlt={e.imgAlt} likeUser={e.likeUser} likeUserImg={e.likeUserImg} likeNumber={e.likeNumber} />)}
+        </div>
+    )
+}
+
 function Post(props) {
     return (
         <div class="post">
@@ -34,19 +47,6 @@ function Post(props) {
                     </div>
                 </div>
             </div>
-        </div>
-    )
-}
-
-
-
-
-export default function Posts() {
-
-    return (
-        <div class="posts">
-            <Post imgUser="assets/img/meowed.svg" nameUser="meowed" img="assets/img/gato-telefone.svg" imgAlt="gato-telefone" likeUser="respondeai" likeUserImg="assets/img/respondeai.svg" likeNumber="101.523" />
-            <Post imgUser="assets/img/barked.svg" nameUser="barked" img="assets/img/dog.svg" imgAlt="dog" likeUser="adorable_animals" likeUserImg="assets/img/adorable_animals.svg" likeNumber="99.159" />
         </div>
     )
 }
