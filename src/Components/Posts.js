@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 const posts = [
     { imgUser: "assets/img/meowed.svg", nameUser: "meowed", img: "assets/img/gato-telefone.svg", imgAlt: "gato-telefone", likeUser: "respondeai", likeUserImg: "assets/img/respondeai.svg", likeNumber: "101.523" },
-    { imgUser: "assets/img/barked.svg", nameUser: "barked", img: "assets/img/dog.svg", imgAlt: "dog", likeUser: "adorable_animals", likeUserImg: "assets/img/adorable_animals.svg", likeNumber: "99.159" }
+    { imgUser: "assets/img/barked.svg", nameUser: "barked", img: "assets/img/dog.svg", imgAlt: "dog", likeUser: "adorable_animals", likeUserImg: "assets/img/adorable_animals.svg", likeNumber: "99.159" },
+    { imgUser: "assets/img/Anônimo.png", nameUser: "Anônimo", img: "assets/img/gato-telefone.svg", imgAlt: "gato-telefone", likeUser: "9gag", likeUserImg: "assets/img/9gag.svg", likeNumber: "3.101.523" }
 ];
 
 export default function Posts() {
@@ -12,6 +15,14 @@ export default function Posts() {
 }
 
 function Post(props) {
+    const [salvo, setSalvo]=useState('bookmark-outline');
+
+    function salvar(){
+        if(salvo==='bookmark-outline'){
+            setSalvo('bookmark');
+        }else setSalvo('bookmark-outline')
+    }
+
     return (
         <div class="post">
             <div class="topo">
@@ -36,7 +47,7 @@ function Post(props) {
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
                     <div>
-                        <ion-icon name="bookmark-outline"></ion-icon>
+                        <ion-icon onClick={salvar} name={salvo}></ion-icon>
                     </div>
                 </div>
 
