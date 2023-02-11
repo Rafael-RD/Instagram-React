@@ -1,29 +1,23 @@
 import { useState } from "react"
 
-// const novoNome=prompt('Qual o seu nome?');
-//         setUser(novoNome);S
-//         localStorage.setItem('user', novoNome);
-
-
-// localStorage.setItem('user', user);
-// setUser(prompt('Qual o seu nome?'));
-
-// const [user,setUser]=useState("Anônimo")
-
 export default function Usuario() {
     const [user, setUser]=useState(localStorage.getItem("user") ? localStorage.getItem("user") : "Anônimo");
     const [img, setImg]=useState(localStorage.getItem("img") ? localStorage.getItem("img") : "assets/img/Anônimo.png");
     
     function trocarNome(){
         const novoNome=prompt('Qual o seu nome?');
-        setUser(novoNome);
-        localStorage.setItem('user', novoNome);
+        if(novoNome!==''){
+            setUser(novoNome);
+            localStorage.setItem('user', novoNome);
+        }
     }
 
     function trocarImg(){
         const novaImg=prompt('Url da imagem');
-        setImg(novaImg);
-        localStorage.setItem('img', novaImg);
+        if(novaImg!==''){
+            setImg(novaImg);
+            localStorage.setItem('img', novaImg);
+        }
     }
 
     return (
