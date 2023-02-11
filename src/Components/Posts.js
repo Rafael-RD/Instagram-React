@@ -33,7 +33,7 @@ function Post(props) {
     }
 
     return (
-        <div className="post">
+        <div data-test="post" className="post">
             <div className="topo">
                 <div className="usuario">
                     <img src={props.imgUser} alt={props.nameUser} />
@@ -45,25 +45,25 @@ function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img onDoubleClick={()=>setCurtido(true)} src={props.img} alt={props.imgAlt} />
+                <img data-test="post-image" onDoubleClick={()=>setCurtido(true)} src={props.img} alt={props.imgAlt} />
             </div>
 
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <ion-icon class={curtido?'red':''} onClick={curtir} name={curtido?"heart":"heart-outline"}></ion-icon>
+                        <ion-icon data-test="like-post" class={curtido?'red':''} onClick={curtir} name={curtido?"heart":"heart-outline"}></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
                     <div>
-                        <ion-icon onClick={salvar} name={salvo}></ion-icon>
+                        <ion-icon data-test="save-post" onClick={salvar} name={salvo}></ion-icon>
                     </div>
                 </div>
 
                 <div className="curtidas">
                     <img src={props.likeUserImg} alt={props.likeUser} />
                     <div className="texto">
-                        Curtido por <strong>{props.likeUser}</strong> e <strong>outras {(Number(props.likeNumber)+(curtido?1:0)).toLocaleString('pt-BR')} pessoas</strong>
+                        Curtido por <strong>{props.likeUser}</strong> e <strong data-test="likes-number">outras {(Number(props.likeNumber)+(curtido?1:0)).toLocaleString('pt-BR')} pessoas</strong>
                     </div>
                 </div>
             </div>
