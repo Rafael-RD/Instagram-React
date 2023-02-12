@@ -16,7 +16,11 @@ export default function Posts() {
 
 function Post(props) {
     const [salvo, setSalvo]=useState('bookmark-outline');
-    const [curtido, setCurtido]=useState(false)
+    const [curtido, setCurtido]=useState(false);
+    const [overlay, setOverlay]=useState(false);
+    const [animacao, setAnimacao]=useState(false);
+
+
 
 
     function salvar(){
@@ -25,11 +29,23 @@ function Post(props) {
         }else setSalvo('bookmark-outline')
     }
 
-    function curtir(){
+    function curtirBtn(){
         if(curtido===false){
             setCurtido(true);
         } 
         else setCurtido(false)
+    }
+
+    function curtirImg(){
+        setCurtido(true);
+        setOverlay(true);
+        setTimeout(() => {
+            setAnimacao(true)
+        }, 1);
+        setTimeout(() => {
+           setOverlay(false);
+           setAnimacao(false)
+        }, 500);
     }
 
     return (
@@ -45,13 +61,16 @@ function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img data-test="post-image" onDoubleClick={()=>setCurtido(true)} src={props.img} alt={props.imgAlt} />
+                <img data-test="post-image" onDoubleClick={curtirImg} src={props.img} alt={props.imgAlt} />
+                <div className={overlay?'shown':'hidden'}>
+                    <ion-icon class={animacao?'grow':''} name="heart"></ion-icon>
+                </div>
             </div>
 
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <ion-icon data-test="like-post" class={curtido?'red':''} onClick={curtir} name={curtido?"heart":"heart-outline"}></ion-icon>
+                        <ion-icon data-test="like-post" class={curtido?'red':''} onClick={curtirBtn} name={curtido?"heart":"heart-outline"}></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
